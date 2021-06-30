@@ -174,7 +174,7 @@ def add_url(aria_instance, text_url, c_file_name):
     except Exception as e:
         return (
             False,
-            "**FAILED** \n" + str(e) + " \nPlease do not send SLOW links. Read /help",
+            "**FAILED** \n" + str(e) + " \nPlease Do Not Send SLOW links. Read /help",
         )
     else:
         return True, "" + download.gid + ""
@@ -288,9 +288,9 @@ async def call_apropriate_function(
                         f"<b><a href='tg://user?id={user_id}'>📁 Your Requested Files</a></b>\n\n"
                     )
                     message_to_send = mention_req_user + message_to_send
-                    message_to_send = message_to_send + "\n\n" + "#uploaded\n\n<b>💫 Powered By : @TGFilmZone</b>"
+                    message_to_send = message_to_send + "\n\n" + "#uploaded\n\n<b>💫 Powered By : @streamflix_app</b>"
                 else:
-                    message_to_send = "<i>FAILED</i> to upload files. 😞😞"
+                    message_to_send = "<i>FAILED</i> to upload files.⚠️"
                 await user_message.reply_text(
                     text=message_to_send, quote=True, disable_web_page_preview=True
                 )
@@ -355,7 +355,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
                             f"Cancelling downloading of {file.name} may be due to slow torrent"
                         )
                         await event.edit(
-                            f"**Download cancelled :**\n<code>{file.name}</code>\n\n #MetaDataError"
+                            f"**Download Cancelled :**\n<code>{file.name}</code>\n\n #MetaDataError"
                         )
                         file.remove(force=True, files=True)
                         return False
@@ -369,7 +369,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
             await check_progress_for_dl(aria2, gid, event, previous_message)
         else:
             LOGGER.info(
-                f"<b> Leechd Successfully</b>: `{file.name} ({file.total_length_string()})` 🤒"
+                f"<b> Leechd Successfully</b>: `{file.name} ({file.total_length_string()})` 😎"
             )
             await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
             await event.edit(
@@ -391,7 +391,7 @@ async def check_progress_for_dl(aria2, gid, event, previous_message):
         file.remove(force=True, files=True)
         await event.edit(
             "*Download Auto Canceled :**\n\n"
-            "`Your Torrent/Link is Dead.`👺".format(file.name)
+            "`Your Torrent/Link is Dead.`😔".format(file.name)
         )
         return False
     except Exception as e:
